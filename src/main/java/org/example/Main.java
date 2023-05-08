@@ -10,9 +10,18 @@ public class Main {
         public static void makeAPdfWithStreams() throws InterruptedException, IOException {
             Process wkhtml; // Create uninitialized process
 
-            // Start by setting up file streams
-            File destinationFile = new File("/Users/xiyuezhang/Projects/StreamPDF/test1.pdf");
-            File sourceFile = new File("/Users/xiyuezhang/Projects/StreamPDF/test1.html");
+            String os = System.getProperty("os.name");
+            File destinationFile;
+            File sourceFile;
+            if(os.startsWith("Windows")) {
+                // Start by setting up file streams
+                destinationFile = new File("C:\\Users\\zhangxiyue\\Documents|StreamPDF\\test1.pdf");
+                sourceFile = new File("C:\\Users\\zhangxiyue\\Documents|StreamPDF\\test1.html");
+            } else {
+                // Start by setting up file streams
+                destinationFile = new File("/Users/xiyuezhang/Projects/StreamPDF/test1.pdf");
+                sourceFile = new File("/Users/xiyuezhang/Projects/StreamPDF/test1.html");
+            }
 
             FileInputStream fis = new FileInputStream(sourceFile);
             FileOutputStream fos = new FileOutputStream(destinationFile);
